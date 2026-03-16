@@ -9,6 +9,8 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 	apt-get update && apt-get --no-install-recommends install -y \
 	nodejs npm
 
+ENV NODE_ENV=production
+
 ADD package.json ./
 RUN npm install --omit dev && npm cache clean --force
 

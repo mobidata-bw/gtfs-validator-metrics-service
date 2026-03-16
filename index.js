@@ -2,6 +2,10 @@ import {mkdtemp, readFile} from 'node:fs/promises'
 import {cpus as osCpus} from 'node:os'
 import {execa} from 'execa'
 import {join as pathJoin} from 'node:path'
+import fastify from 'fastify'
+import fastifyAcceptsPlugin from '@fastify/accepts'
+import {randomUUID} from 'node:crypto'
+import pkg from './package.json' with {type: 'json'}
 
 const runGtfsValidator = async (gtfsUrl, opt = {}) => {
 	const {
@@ -179,10 +183,105 @@ const formatGtfsValidatorReportAsMetrics = (report, opt = {}) => {
 	].join('')
 }
 
-// todo
+const runValidationHttpApi = async (cfg, opt = {}) => {
+	const {
+		port,
+		abortSignal,
+	} = cfg
+	const {
+		getricsPrefix,
+		logLevel,
+		serverHeader,
+	} = {
+		getricsPrefix: 'gtfs_',
+		logLevel: 'info',
+		serverHeader: `${pkg.name} v${pkg.version}`,
+		...opt,
+	}
+
+	const api = fastify({
+		logger: {
+			level: logLevel,
+		},
+		genReqId: randomUUID,
+	})
+
+	api.register(fastifyAcceptsPlugin)
+
+	{
+		const schema = {
+			query: {
+				type: 'object',
+				required: [
+					'target',
+				],
+				properties: {
+					target: {
+						type: 'string',
+						format: 'url',
+					},
+					country_code: {
+						type: 'string',
+					},
+				},
+			},
+		}
+
+		// see also https://prometheus.io/docs/instrumenting/content_negotiation/#protocol-headers
+		const responseMimeType = 'application/openmetrics-text; version=1.0.0; charset=utf-8'
+
+		api.get('/probe', {schema}, async (request, reply) => {
+			reply.header('server', serverHeader)
+
+			// todo: use fastify-native content negotiation once supported: https://github.com/fastify/fastify/issues/4341
+			reply.header('Accept', responseMimeType)
+			if (request.accepts().type([responseMimeType]) !== responseMimeType) {
+				reply.code(406)
+				reply.send({
+					message: `${responseMimeType} is the only supported metrics Content-Type`,
+					statusCode: 406,
+				})
+				return;
+			}
+
+			const {
+				target: gtfsUrl,
+				country_code: countryCode = null,
+			} = request.query
+
+			const {
+				systemErrors,
+				report,
+			} = await runGtfsValidator(gtfsUrl, {
+				countryCode,
+				cancelSignal: request.signal,
+			})
+			request.log.debug({
+				systemErrors,
+				reportSummary: report.summary,
+			}, 'GTFS validation finished')
+			request.log.trace({
+				report,
+			}, 'full GTFS validation report')
+
+			const metrics = formatGtfsValidatorReportAsMetrics(report, {
+				metricsPrefix: getricsPrefix,
+			})
+			reply.type(responseMimeType)
+			reply.send(metrics)
+		})
+	}
+
+	await api.listen({
+		port,
+	})
+	abortSignal.onabort = () => {
+		api.close()
+	}
+}
 
 export {
 	runGtfsValidator,
 	formatGtfsValidatorReportAsMetrics,
-	// todo
+	runValidationHttpApi,
 }
