@@ -9,9 +9,11 @@ const port = process.env.PORT
 ok(Number.isInteger(port), '$PORT must be an integer')
 
 const abortController = new AbortController()
-process.once('SIGTERM', () => {
-	abortController.abort('received SIGTERM')
-})
+const stopService = () => {
+	abortController.abort('received SIGINT')
+}
+process.once('SIGINT', stopService)
+process.once('SIGTERM', stopService)
 
 const opt = {}
 
