@@ -189,10 +189,12 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 		abortSignal,
 	} = cfg
 	const {
+		host,
 		getricsPrefix,
 		logLevel,
 		serverHeader,
 	} = {
+		host: 'localhost',
 		getricsPrefix: 'gtfs_',
 		logLevel: 'info',
 		serverHeader: `${pkg.name} v${pkg.version}`,
@@ -274,6 +276,7 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 
 	await api.listen({
 		port,
+		host,
 	})
 	abortSignal.onabort = () => {
 		api.close()

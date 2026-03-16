@@ -14,6 +14,8 @@ RUN --mount=type=cache,target=/var/log,sharing=locked \
 COPY --from=gtfs-validator /gtfs-validator-cli.jar /opt/gtfs-validator-cli.jar
 
 ENV NODE_ENV=production
+# Let Node.js listen not on `lo` (loopback interface) but on all interfaces, so that it is available non-locally.
+ENV HTTP_LISTEN_HOST='0.0.0.0'
 
 ADD package.json ./
 RUN --mount=type=cache,target=/root/.npm,sharing=locked \

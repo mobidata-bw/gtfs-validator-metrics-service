@@ -15,6 +15,10 @@ process.once('SIGTERM', () => {
 
 const opt = {}
 
+if (process.env.HTTP_LISTEN_HOST) {
+	opt.host = process.env.HTTP_LISTEN_HOST
+}
+
 if (process.env.GTFS_METRICS_PREFIX) {
 	opt.gtfsMetricsPrefix = process.env.GTFS_METRICS_PREFIX
 }
