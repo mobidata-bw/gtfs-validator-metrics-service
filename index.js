@@ -15,7 +15,7 @@ const runGtfsValidator = async (gtfsUrl, opt = {}) => {
 	} = {
 		countryCode: null,
 		cancelSignal: null,
-		pathToGtfsValidator: '/gtfs-validator-cli.jar',
+		pathToGtfsValidator: '/opt/gtfs-validator-cli.jar',
 		...opt,
 	}
 
