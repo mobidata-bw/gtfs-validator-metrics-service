@@ -54,7 +54,9 @@ jobs:
         tags: |
           ghcr.io/${{ github.repository }}:latest
         labels: ${{ steps.docker-metadata.outputs.labels }}
-        platforms: linux/amd64,linux/arm64
+        # gtfs-validator-metrics-service's base image (ghcr.io/mobilitydata/gtfs-validator) does not provide linux/arm64 images.
+        # see also https://github.com/MobilityData/gtfs-validator/pull/1367
+        platforms: linux/amd64
         # https://docs.docker.com/build/ci/github-actions/cache/#cache-backend-api
         cache-from: type=gha
         cache-to: type=gha,mode=max
