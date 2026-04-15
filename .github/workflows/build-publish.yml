@@ -2,8 +2,8 @@ name: build & publish Docker image
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '*'
 
 jobs:
   lint-test:
@@ -34,18 +34,12 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ github.token }}
 
-    - name: compute OCI version
-      id: docker-meta
-      run: |
-        set -x
-        oci_version="$(jq -rc .version package.json)"
-        echo "oci-version=$oci_version" >>$GITHUB_OUTPUT
-    - name: compute Docker image OCI metadata
+    - name: compute Docker image OCI metadata from commit & repo
       id: docker-metadata
-      uses: docker/metadata-action@v6
+      uses: docker/metadata-action@v5
       with:
         labels: |
-          org.opencontainers.image.version=${{ steps.docker-meta.outputs.oci-version }}
+          org.opencontainers.image.version=${{ github.ref_name }}
 
     - name: build and push Docker image
       uses: docker/build-push-action@v6
@@ -53,6 +47,7 @@ jobs:
         push: true
         tags: |
           ghcr.io/${{ github.repository }}:latest
+          ghcr.io/${{ github.repository }}:${{ github.ref_name }}
         labels: ${{ steps.docker-metadata.outputs.labels }}
         # gtfs-validator-metrics-service's base image (ghcr.io/mobilitydata/gtfs-validator) does not provide linux/arm64 images.
         # see also https://github.com/MobilityData/gtfs-validator/pull/1367
