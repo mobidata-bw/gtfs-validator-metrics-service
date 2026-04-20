@@ -1,21 +1,35 @@
 import {mkdtemp, readFile} from 'node:fs/promises'
 import {cpus as osCpus} from 'node:os'
-import {execa} from 'execa'
+import {execa, ExecaError} from 'execa'
 import {join as pathJoin} from 'node:path'
 import fastify from 'fastify'
 import fastifyAcceptsPlugin from '@fastify/accepts'
 import {randomUUID} from 'node:crypto'
 import pkg from './package.json' with {type: 'json'}
 
-const runGtfsValidator = async (gtfsUrl, opt = {}) => {
+const executeGtfsValidator = (gtfsValidatorArgs, opt = {}) => {
 	const {
-		countryCode,
 		cancelSignal,
 		pathToGtfsValidator,
 	} = {
-		countryCode: null,
 		cancelSignal: null,
 		pathToGtfsValidator: '/opt/gtfs-validator-cli.jar',
+		...opt,
+	}
+
+	return execa('java', [
+		'-jar', pathToGtfsValidator,
+		...gtfsValidatorArgs,
+	], {
+		...(cancelSignal ? {cancelSignal} : {}),
+	})
+}
+
+const runGtfsValidator = async (gtfsUrl, opt = {}) => {
+	const {
+		countryCode,
+	} = {
+		countryCode: null,
 		...opt,
 	}
 
@@ -32,12 +46,7 @@ const runGtfsValidator = async (gtfsUrl, opt = {}) => {
 		gtfsValidatorArgs.push('-c', countryCode)
 	}
 
-	await execa('java', [
-		'-jar', pathToGtfsValidator,
-		...gtfsValidatorArgs,
-	], {
-		...(cancelSignal ? {cancelSignal} : {}),
-	})
+	await executeGtfsValidator(gtfsValidatorArgs, opt)
 
 	const systemErrors = JSON.parse(await readFile(pathJoin(outDir, 'system_errors.json'), {encoding: 'utf8'}))
 	const report = JSON.parse(await readFile(pathJoin(outDir, 'report.json'), {encoding: 'utf8'}))
@@ -209,6 +218,26 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 	})
 
 	api.register(fastifyAcceptsPlugin)
+
+	{
+		api.get('/health', async (request, reply) => {
+			reply.header('server', serverHeader)
+
+			try {
+				await executeGtfsValidator(['--help'])
+				reply.status(200).send('ok')
+			} catch (err) {
+				if (err instanceof ExecaError) {
+					request.log.warn({
+						err,
+					}, 'failed to run GTFS Validator with --help')
+					reply.status(500).send('not ok')
+				} else {
+					throw err
+				}
+			}
+		})
+	}
 
 	{
 		const schema = {
