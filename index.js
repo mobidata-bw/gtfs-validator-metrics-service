@@ -280,14 +280,21 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 				country_code: countryCode = null,
 			} = request.query
 
+			const gtfsValidatorOpts = {
+				countryCode,
+				cancelSignal: request.signal,
+			}
+			request.log.debug({
+				gtfsUrl,
+				opts: gtfsValidatorOpts,
+			}, 'running GTFS Validator')
 			const {
 				systemErrors,
 				report,
-			} = await runGtfsValidator(gtfsUrl, {
-				countryCode,
-				cancelSignal: request.signal,
-			})
-			request.log.debug({
+			} = await runGtfsValidator(gtfsUrl, gtfsValidatorOpts)
+			request.log.info({
+				gtfsUrl,
+				opts: gtfsValidatorOpts,
 				systemErrors,
 				reportSummary: report.summary,
 			}, 'GTFS validation finished')
