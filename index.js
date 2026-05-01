@@ -108,7 +108,7 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 			const {
 				systemErrors,
 				report,
-			} = await runGtfsValidator(gtfsUrl, gtfsValidatorOpts)
+			} = await runGtfsValidator(gtfsUrl, null, gtfsValidatorOpts)
 			request.log.info({
 				gtfsUrl,
 				opts: gtfsValidatorOpts,

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+// todo [breaking]: rename to run-validation-http-api.js
+
 import {ok} from 'node:assert/strict'
 import {runValidationHttpApi} from './index.js'
 
