@@ -33,5 +33,5 @@ scrape_configs:
     - source_labels: [__address__]
       target_label: __param_target
     - target_label: __address__
-      replacement: 'http://gtfs-validation-metrics-service.local:3000' # adapt to your architecture
+      replacement: 'gtfs-validation-metrics-service.local:3000' # adapt to your architecture
 ```
