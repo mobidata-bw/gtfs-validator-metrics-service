@@ -13,7 +13,7 @@
 	},
 	"dependencies": {
 		"@fastify/accepts": "^5.0.4",
-		"execa": "^9.6.1",
+		"execa": "^10.0.0",
 		"fastify": "^5.8.2"
 	},
 	"devDependencies": {
