@@ -42,7 +42,7 @@ jobs:
           org.opencontainers.image.version=${{ github.ref_name }}
 
     - name: build and push Docker image
-      uses: docker/build-push-action@v6
+      uses: docker/build-push-action@v7
       with:
         push: true
         tags: |
