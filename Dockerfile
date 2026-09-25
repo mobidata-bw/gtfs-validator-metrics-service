@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 # todo: keep up-to-date using renovate
-FROM ghcr.io/mobilitydata/gtfs-validator:7.1.0@sha256:1eefdbb5d25cbf478a137179a5ecf2681e78521384dc051994f8c33bb09d158e AS gtfs-validator
+FROM ghcr.io/mobilitydata/gtfs-validator:8.0.1@sha256:26624464be966808662a78c85661b63a313ea936f3a3ee1dbb92c968415275ca AS gtfs-validator
 
 FROM node:24-alpine
 
