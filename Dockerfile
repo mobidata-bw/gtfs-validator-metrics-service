@@ -11,7 +11,7 @@ WORKDIR /app
 RUN --mount=type=cache,target=/var/log,sharing=locked \
 	apk add --no-cache \
 	curl \
-	openjdk17-jre
+	openjdk25-jre-headless
 
 COPY --from=gtfs-validator /gtfs-validator-cli.jar /opt/gtfs-validator-cli.jar
 
