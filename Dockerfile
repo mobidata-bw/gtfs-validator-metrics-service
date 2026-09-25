@@ -26,6 +26,8 @@ RUN --mount=type=cache,target=/root/.npm,sharing=locked \
 
 ADD . .
 
+EXPOSE 3000
+
 HEALTHCHECK --interval=15s --timeout=5s --start-period=3s CMD ["curl", "-fsS", "-o", "/dev/null", "http://localhost:3000/health"]
 
 ENTRYPOINT [ ]
