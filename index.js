@@ -66,7 +66,7 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 				properties: {
 					target: {
 						type: 'string',
-						format: 'url',
+						// format: 'url',
 					},
 					country_code: {
 						type: 'string',
@@ -93,7 +93,7 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 			}
 
 			const {
-				target: gtfsUrl,
+				target: gtfsPath,
 				country_code: countryCode = null,
 			} = request.query
 
@@ -102,15 +102,15 @@ const runValidationHttpApi = async (cfg, opt = {}) => {
 				cancelSignal: request.signal,
 			}
 			request.log.debug({
-				gtfsUrl,
+				gtfsPath,
 				opts: gtfsValidatorOpts,
 			}, 'running GTFS Validator')
 			const {
 				systemErrors,
 				report,
-			} = await runGtfsValidator(gtfsUrl, null, gtfsValidatorOpts)
+			} = await runGtfsValidator(null, gtfsPath, gtfsValidatorOpts)
 			request.log.info({
-				gtfsUrl,
+				gtfsPath,
 				opts: gtfsValidatorOpts,
 				systemErrors,
 				reportSummary: report.summary,
