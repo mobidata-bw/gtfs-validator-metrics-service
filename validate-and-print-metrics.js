@@ -61,13 +61,18 @@ try {
 	}
 }
 
+const opt = {}
+if (flags['country-code']) {
+	opt.countryCode = flags['country-code']
+}
+if (flags['validator-jar']) {
+	opt.pathToGtfsValidator = flags['validator-jar'] || null
+}
+
 const {
 	// systemErrors,
 	report,
-} = await runGtfsValidator(gtfsUrl, gtfsPath, {
-	countryCode: flags['country-code'] || null,
-	pathToGtfsValidator: flags['validator-jar'] || null,
-})
+} = await runGtfsValidator(gtfsUrl, gtfsPath, opt)
 
 const metrics = formatGtfsValidatorReportAsMetrics(report)
 
