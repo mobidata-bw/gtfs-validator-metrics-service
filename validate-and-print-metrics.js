@@ -22,7 +22,7 @@ const {
 			type: 'string',
 			short: 'c',
 		},
-		'validator-jar': {
+		'validator': {
 			type: 'string',
 			short: 'V',
 		},
@@ -36,8 +36,8 @@ Usage:
     validate-gtfs-and-print-metrics <url-or-path-to-gtfs>
 Options:
     --country-code     -o  Country code to use for validation.
-    --validator-jar    -V  Path to the GTFS Validator .jar file.
-                             Default: /opt/gtfs-validator-cli.jar
+    --validator        -V  Path to the GTFS Validator executable.
+                             Default: /opt/gtfs-analyzer
 Examples:
     validate-gtfs-and-print-metrics -c DE path/to/gtfs.zip
 \n`)
@@ -65,8 +65,8 @@ const opt = {}
 if (flags['country-code']) {
 	opt.countryCode = flags['country-code']
 }
-if (flags['validator-jar']) {
-	opt.pathToGtfsValidator = flags['validator-jar'] || null
+if (flags['validator']) {
+	opt.pathToGtfsValidator = flags['validator'] || null
 }
 
 const {

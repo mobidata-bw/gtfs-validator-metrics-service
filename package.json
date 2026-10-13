@@ -14,7 +14,8 @@
 	"dependencies": {
 		"@fastify/accepts": "^5.0.4",
 		"execa": "^9.6.1",
-		"fastify": "^5.8.2"
+		"fastify": "^5.8.2",
+		"lodash": "^4.18.1"
 	},
 	"devDependencies": {
 		"@eslint/js": "^10.0.1",

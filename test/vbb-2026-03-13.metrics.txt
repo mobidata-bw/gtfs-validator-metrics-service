@@ -1,0 +1,73 @@
+# TYPE gtfs_validator_version gauge
+# HELP gtfs_validator_version version of the GTFS Validator used
+gtfs_validator_version{v="7.1.0"} 1
+
+# TYPE gtfs_validated_at_seconds counter
+# UNIT gtfs_validated_at_seconds seconds
+# HELP gtfs_validated_at_seconds when the GTFS validation finished
+gtfs_validated_at_seconds 1773361919
+
+# TYPE gtfs_validation_time_seconds counter
+# UNIT gtfs_validation_time_seconds seconds
+# HELP gtfs_validation_time_seconds how long the the GTFS validation took
+gtfs_validation_time_seconds 31.101127875
+
+# TYPE gtfs_validator_files_total gauge
+# HELP gtfs_validator_files_total GTFS files read by the GTFS Validator
+gtfs_validator_files_total{file="agency.txt"} 1
+gtfs_validator_files_total{file="calendar.txt"} 1
+gtfs_validator_files_total{file="calendar_dates.txt"} 1
+gtfs_validator_files_total{file="frequencies.txt"} 1
+gtfs_validator_files_total{file="levels.txt"} 1
+gtfs_validator_files_total{file="pathways.txt"} 1
+gtfs_validator_files_total{file="routes.txt"} 1
+gtfs_validator_files_total{file="shapes.txt"} 1
+gtfs_validator_files_total{file="stop_times.txt"} 1
+gtfs_validator_files_total{file="stops.txt"} 1
+gtfs_validator_files_total{file="transfers.txt"} 1
+gtfs_validator_files_total{file="trips.txt"} 1
+
+# TYPE gtfs_counts_total gauge
+# HELP gtfs_counts_total number of entities in the GTFS dataset
+gtfs_counts_total{kind="Shapes"} 14335
+gtfs_counts_total{kind="Stops"} 41958
+gtfs_counts_total{kind="Routes"} 1303
+gtfs_counts_total{kind="Trips"} 254892
+gtfs_counts_total{kind="Agencies"} 35
+gtfs_counts_total{kind="Blocks"} 15558
+
+# TYPE gtfs_features gauge
+# HELP gtfs_features features used in the GTFS dataset
+gtfs_features{feature="pathway_connections"} 1
+gtfs_features{feature="pathway_details"} 1
+gtfs_features{feature="levels"} 1
+gtfs_features{feature="transfers"} 1
+gtfs_features{feature="shapes"} 1
+gtfs_features{feature="route_colors"} 1
+gtfs_features{feature="headsigns"} 1
+gtfs_features{feature="stops_wheelchair accessibility"} 1
+gtfs_features{feature="trips_wheelchair accessibility"} 1
+gtfs_features{feature="bike_allowed"} 1
+gtfs_features{feature="location_types"} 1
+gtfs_features{feature="in_station traversal time"} 1
+
+# TYPE gtfs_notices_total gauge
+# HELP gtfs_notices_total number of notices generated, by severity
+gtfs_notices_total{severity="ERROR",code="block_trips_with_overlapping_stop_times"} 39
+gtfs_notices_total{severity="WARNING",code="duplicate_route_name"} 92
+gtfs_notices_total{severity="WARNING",code="expired_calendar"} 7
+gtfs_notices_total{severity="WARNING",code="fast_travel_between_consecutive_stops"} 255
+gtfs_notices_total{severity="WARNING",code="fast_travel_between_far_stops"} 19
+gtfs_notices_total{severity="WARNING",code="leading_or_trailing_whitespaces"} 125
+gtfs_notices_total{severity="WARNING",code="missing_recommended_file"} 1
+gtfs_notices_total{severity="WARNING",code="mixed_case_recommended_field"} 3
+gtfs_notices_total{severity="WARNING",code="non_ascii_or_non_printable_char"} 6835
+gtfs_notices_total{severity="WARNING",code="pathway_dangling_generic_node"} 5
+gtfs_notices_total{severity="ERROR",code="pathway_unreachable_location"} 8
+gtfs_notices_total{severity="INFO",code="platform_without_parent_station"} 4
+gtfs_notices_total{severity="WARNING",code="same_name_and_description_for_stop"} 6
+gtfs_notices_total{severity="WARNING",code="stop_too_far_from_shape"} 956
+gtfs_notices_total{severity="WARNING",code="stop_without_stop_time"} 1436
+gtfs_notices_total{severity="WARNING",code="stops_match_shape_out_of_order"} 88
+gtfs_notices_total{severity="WARNING",code="unexpected_enum_value"} 1224
+

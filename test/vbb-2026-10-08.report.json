@@ -1,0 +1,1391 @@
+{
+  "status": "ok",
+  "engine": "gtfs-analyzer",
+  "engine_version": "0.16.0",
+  "engine_commit": "f30439a7012561e60866be406eb8210380a5f498",
+  "validation_date": 20261013,
+  "partial": null,
+  "analysis": {
+    "today": 20261013,
+    "lang": "en",
+    "input_mode": "file",
+    "source_url_provided": false,
+    "effective_config": {
+      "big_gap_days": 14,
+      "bunching_threshold_min": 2,
+      "calendar_override_rules": [],
+      "disabled_rule_ids": [],
+      "disabled_rule_ids_gtfs_jp": [],
+      "duration_outlier_sigma": 3.5,
+      "feed_expiry_warning_days": 30,
+      "feed_info_expiry_warning_days": 7,
+      "gtfs_jp_profile": "auto",
+      "headway_outlier_sigma": 2.5,
+      "max_calendar_future_years": 3,
+      "max_file_rows": 1000000,
+      "max_headway_warning_min": 240,
+      "max_headway_warning_min_rail": 720,
+      "max_shape_jump_km": 10.0,
+      "max_shape_jump_km_rail": 30.0,
+      "max_shape_points": 5000,
+      "max_speed_bus_kmh": 120.0,
+      "max_speed_cablecar_kmh": 30.0,
+      "max_speed_ferry_kmh": 80.0,
+      "max_speed_metro_kmh": 150.0,
+      "max_speed_rail_kmh": 300.0,
+      "max_speed_tram_kmh": 100.0,
+      "max_stops_per_trip": 200,
+      "max_total_stop_times": 2000000,
+      "max_transfer_distance_m": 500.0,
+      "max_trip_duration_hours": 24.0,
+      "max_trip_duration_hours_rail": 48.0,
+      "max_trips_per_route": 500,
+      "min_transfer_time_sec": 180,
+      "min_trip_duration_sec": 60,
+      "rail_stop_distance_km": 500.0,
+      "rural_route_ids": [],
+      "service_day_start_hour": 3,
+      "service_day_window_hours_rail": 48,
+      "service_gap_days": 7,
+      "stop_far_from_parent_m": 150.0,
+      "stop_far_from_shape_m": 100.0,
+      "stop_far_from_shape_m_rail": 200.0,
+      "stop_name_best_practices": false,
+      "stop_too_close_m": 5.0,
+      "upcoming_service_days": 7
+    }
+  },
+  "reports": {
+    "r1": {
+      "publishable": true,
+      "coverage_complete": true,
+      "blocker_notice_count": 0,
+      "blocker_rule_ids": []
+    },
+    "r5": {
+      "score": 79.7,
+      "pub_score": 100.0,
+      "spec_score": 94.3,
+      "interop_score": 87.7,
+      "quality_score": 52.6,
+      "analytics_score": 51.0
+    },
+    "r9": {
+      "items": [
+        {
+          "rule_id": "RTS_030",
+          "title": "route_type uses an extended value outside the core enum",
+          "labels": [
+            "interop",
+            "widespread",
+            "high-impact"
+          ],
+          "priority_score": 5.13,
+          "score_delta": 5.4,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1220,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STM_042",
+          "title": "stop_headsign contains characters unsupported by Google Transit",
+          "labels": [
+            "interop",
+            "widespread"
+          ],
+          "priority_score": 3.76,
+          "score_delta": 0.1,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 182,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STM_012",
+          "title": "Unrealistic speed between stops",
+          "labels": [
+            "interop",
+            "single"
+          ],
+          "priority_score": 1.5,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "RTS_008",
+          "title": "Route color and text color have low contrast",
+          "labels": [
+            "quick-win",
+            "quality",
+            "widespread"
+          ],
+          "priority_score": 6.89,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 35,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "RTS_019",
+          "title": "Duplicate route name",
+          "labels": [
+            "quick-win",
+            "quality",
+            "widespread"
+          ],
+          "priority_score": 6.34,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 26,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "DQ_018",
+          "title": "All-caps value in recommended field",
+          "labels": [
+            "quick-win",
+            "quality"
+          ],
+          "priority_score": 3.17,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 2,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "TRP_024",
+          "title": "Inconsistent route type within block",
+          "labels": [
+            "quick-win"
+          ],
+          "priority_score": 2.21,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 9,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "DQ_016",
+          "title": "Extra whitespace in field value",
+          "labels": [
+            "quick-win",
+            "quality",
+            "single"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "LVL_003",
+          "title": "level_name missing",
+          "labels": [
+            "quick-win"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 3,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "STP_022",
+          "title": "stop_code missing",
+          "labels": [
+            "quick-win",
+            "quality",
+            "single"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "STP_037",
+          "title": "Some stops have not set wheelchair boarding",
+          "labels": [
+            "quick-win",
+            "quality",
+            "single"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "TRP_028",
+          "title": "Some trips have not set wheelchair accessibility",
+          "labels": [
+            "quick-win",
+            "quality",
+            "single"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "ARC_020",
+          "title": "Recommended GTFS file missing (shapes.txt or feed_info.txt)",
+          "labels": [
+            "quick-win",
+            "single"
+          ],
+          "priority_score": 1.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "DQ_020",
+          "title": "Recommended field missing or empty",
+          "labels": [
+            "quick-win",
+            "single"
+          ],
+          "priority_score": 1.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "PTH_025",
+          "title": "Recommended pathway length missing",
+          "labels": [
+            "quick-win",
+            "single"
+          ],
+          "priority_score": 1.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "SHP_010",
+          "title": "Repeated shape point (consecutive identical coordinates)",
+          "labels": [
+            "quick-win",
+            "single"
+          ],
+          "priority_score": 1.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "XFL_013",
+          "title": "shape_id used in multiple directions",
+          "labels": [
+            "quality",
+            "widespread"
+          ],
+          "priority_score": 4.91,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 29,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "TRF_020",
+          "title": "Transfer walking speed is too fast",
+          "labels": [
+            "quality",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 4.51,
+          "score_delta": 0.5,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 519,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "GEO_009",
+          "title": "Stop too far from shape route",
+          "labels": [
+            "quality",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.66,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 44,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 4.5
+        },
+        {
+          "rule_id": "SHP_015",
+          "title": "Shape has statistically too few points",
+          "labels": [
+            "quality",
+            "widespread"
+          ],
+          "priority_score": 3.59,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 41,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STP_016",
+          "title": "Two stops at identical coordinates",
+          "labels": [
+            "quality",
+            "widespread"
+          ],
+          "priority_score": 3.36,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 32,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STP_029",
+          "title": "Stop inside station but coordinate too far",
+          "labels": [
+            "quality",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.11,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 74,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "PTH_019",
+          "title": "Generic node connected to single pathway (dead-end)",
+          "labels": [
+            "quality"
+          ],
+          "priority_score": 1.87,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 6,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STP_032",
+          "title": "parent_station missing for pathway-connected platform",
+          "labels": [
+            "quality",
+            "single"
+          ],
+          "priority_score": 1.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STM_017",
+          "title": "Shape distance missing in stop times",
+          "labels": [
+            "quality",
+            "single"
+          ],
+          "priority_score": 0.67,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STP_020",
+          "title": "Stop with no trips",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 5.24,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1420,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "STP_039",
+          "title": "stop_code is duplicated",
+          "labels": [
+            "widespread"
+          ],
+          "priority_score": 5.08,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1150,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STP_017",
+          "title": "Two stops too close together",
+          "labels": [
+            "widespread"
+          ],
+          "priority_score": 4.43,
+          "score_delta": 0.1,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 466,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "OPR_012",
+          "title": "Service gap",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 4.39,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 441,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "CAL_010",
+          "title": "Service has too few active days",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 4.36,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 423,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "STM_014",
+          "title": "Excessive speed in segment",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 4.31,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 395,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "SHP_012",
+          "title": "Shape too far from trip stops",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.87,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 212,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "GEO_006",
+          "title": "Large jump in shape",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.3,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 96,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "OPR_001",
+          "title": "Route headway too long",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.2,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 782,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "GEO_007",
+          "title": "Critical jump in shape (3× threshold)",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 3.1,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 24,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 4.5
+        },
+        {
+          "rule_id": "VAT_003",
+          "title": "Trip duration statistical outlier",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 1.9,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 2744,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "CAL_006",
+          "title": "Weekly schedule has all days disabled",
+          "labels": [
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 623,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "CAL_012",
+          "title": "Service gap in the near future",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 87,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "CAL_021",
+          "title": "Active today but no service in the upcoming days",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 98,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "CAL_024",
+          "title": "Calendar inactive in the next 7 days",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 126,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "DQ_003",
+          "title": "Route description missing",
+          "labels": [
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1253,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "DQ_004",
+          "title": "Route URL missing",
+          "labels": [
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1254,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "OPR_004",
+          "title": "No weekend service",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 492,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "OPR_005",
+          "title": "Unusual service frequency",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 518,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "OPR_007",
+          "title": "Repeated stop pattern within trip",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1331,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "OPR_008",
+          "title": "Excessive speed in multiple segments",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 399,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "OPR_009",
+          "title": "Night trip start time too late",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 419,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "OPR_013",
+          "title": "Route operates in one direction only (no return direction)",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 87,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "SHP_014",
+          "title": "First or last stop far from shape endpoint",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 190,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "SHP_017",
+          "title": "Stop sequence conflicts with shape",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 88,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 6.0
+        },
+        {
+          "rule_id": "STM_025",
+          "title": "Short segment timing",
+          "labels": [
+            "analytics",
+            "widespread",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 390,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 4.0
+        },
+        {
+          "rule_id": "STM_026",
+          "title": "Excessive distance between stops",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 36,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STM_035",
+          "title": "Same stop visited twice consecutively (terminal/loop)",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 62,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STM_045",
+          "title": "Trip departure time exceeds the service day window",
+          "labels": [
+            "analytics",
+            "widespread"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 863,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "PTH_015",
+          "title": "Pathway leads to an unreachable stop",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 2.83,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 18,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "PTH_012",
+          "title": "No accessible pathway to station",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 2.0,
+          "score_delta": 2.3,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 1,
+          "base_effort": 3,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "OPR_003",
+          "title": "Trip bunching (minimum headway too small)",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 1.15,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 10,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "VAT_005",
+          "title": "Isolated stop cluster — stops disconnected from main network component",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.67,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "OPR_020",
+          "title": "Route exception day overlap",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.5,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "PTH_008",
+          "title": "stair_count missing",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 0.5,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "PTH_009",
+          "title": "max_slope missing",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 0.5,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "ARC_006",
+          "title": "Optional GTFS file present",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 7,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "ARC_009",
+          "title": "Optional file has no data rows",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "ARC_011",
+          "title": "File size (info)",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 12,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "ARC_022",
+          "title": "File row count exceeds 1,000,000 limit",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 2,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "CAL_007",
+          "title": "Gap in service period",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "CAL_013",
+          "title": "Expired service period",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 5,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "CLD_007",
+          "title": "Excessive calendar exceptions",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "DQ_010",
+          "title": "Agency not used by any route",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "GEO_013",
+          "title": "Feed geographic coverage summary",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "GEO_014",
+          "title": "Feed geographic coverage too wide",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "OPR_024",
+          "title": "Route has an extreme trip count",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "RTS_026",
+          "title": "Duplicate short route name",
+          "labels": [
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "SHP_009",
+          "title": "Shape self-intersects",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "SHP_020",
+          "title": "Repeated point in shape",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 3.0
+        },
+        {
+          "rule_id": "STM_021",
+          "title": "Distance between stops is zero or negative",
+          "labels": [
+            "analytics",
+            "hard"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 17,
+          "realized_dependent_count": 0,
+          "base_effort": 3,
+          "fix_effort": 4.5
+        },
+        {
+          "rule_id": "STM_044",
+          "title": "Feed stop_times exceeds 2,000,000 rows (WASM performance warning)",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "STM_053",
+          "title": "Many consecutive stops have the same time",
+          "labels": [
+            "analytics",
+            "single"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 1,
+          "realized_dependent_count": 0,
+          "base_effort": 2,
+          "fix_effort": 2.0
+        },
+        {
+          "rule_id": "STP_031",
+          "title": "Stop name and description are identical",
+          "labels": [],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 3,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.0
+        },
+        {
+          "rule_id": "TRP_013",
+          "title": "Route has only one trip",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 12,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        },
+        {
+          "rule_id": "TRP_020",
+          "title": "trip_headsign matches intermediate stop name",
+          "labels": [
+            "analytics"
+          ],
+          "priority_score": 0.0,
+          "score_delta": 0.0,
+          "pub_score_delta": 0.0,
+          "affected_instance_count": 13,
+          "realized_dependent_count": 0,
+          "base_effort": 1,
+          "fix_effort": 1.5
+        }
+      ],
+      "r9_total_count": 81,
+      "r9_returned_count": 81,
+      "r9_truncated": false
+    }
+  },
+  "metrics": {
+    "stop_count": 41970,
+    "route_count": 1254,
+    "trip_count": 186138,
+    "shape_count": 14241,
+    "active_service_days": 66,
+    "avg_daily_trips": 61220.43939393939,
+    "feed_start_date": null,
+    "feed_end_date": null,
+    "service_start_date": 20261008,
+    "service_end_date": 20261212,
+    "spec_notice_count": 1,
+    "interop_notice_count": 1403,
+    "quality_notice_count": 5584,
+    "analytics_notice_count": 11831,
+    "overall_score": 79.7,
+    "coverage_complete": true,
+    "file_stats": [
+      {
+        "name": "agency.txt",
+        "rows": 32,
+        "bytes": 3125
+      },
+      {
+        "name": "calendar.txt",
+        "rows": 1719,
+        "bytes": 64324
+      },
+      {
+        "name": "calendar_dates.txt",
+        "rows": 13753,
+        "bytes": 225901
+      },
+      {
+        "name": "frequencies.txt",
+        "rows": 0,
+        "bytes": 64
+      },
+      {
+        "name": "levels.txt",
+        "rows": 358,
+        "bytes": 11538
+      },
+      {
+        "name": "pathways.txt",
+        "rows": 126965,
+        "bytes": 9747654
+      },
+      {
+        "name": "routes.txt",
+        "rows": 1254,
+        "bytes": 50613
+      },
+      {
+        "name": "shapes.txt",
+        "rows": 5667076,
+        "bytes": 170057757
+      },
+      {
+        "name": "stop_times.txt",
+        "rows": 4035736,
+        "bytes": 305506499
+      },
+      {
+        "name": "stops.txt",
+        "rows": 41970,
+        "bytes": 7351792
+      },
+      {
+        "name": "transfers.txt",
+        "rows": 52010,
+        "bytes": 3217914
+      },
+      {
+        "name": "trips.txt",
+        "rows": 186138,
+        "bytes": 12977922
+      }
+    ],
+    "is_gtfs_jp": false,
+    "gtfs_jp_profile": null
+  },
+  "notice_counts": {
+    "total": 18819,
+    "CRITICAL": 0,
+    "HIGH": 802,
+    "MEDIUM": 3826,
+    "LOW": 5791,
+    "INFO": 8400
+  },
+  "triggered_rule_count": 82
+}
