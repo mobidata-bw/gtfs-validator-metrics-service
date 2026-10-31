@@ -3,7 +3,7 @@
 # todo: keep up-to-date using renovate
 FROM ghcr.io/mobilitydata/gtfs-validator:8.0.1@sha256:26624464be966808662a78c85661b63a313ea936f3a3ee1dbb92c968415275ca AS gtfs-validator
 
-FROM node:24-alpine
+FROM node:26-alpine
 
 WORKDIR /app
 
